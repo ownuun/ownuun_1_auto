@@ -1,0 +1,20 @@
+{
+  "name": "@ownuun/token-usage-setup",
+  "version": "1.0.0",
+  "description": "Install BMAD workflows and Claude commands for token usage project",
+  "bin": {
+    "token-usage-setup": "./bin/install.js"
+  },
+  "files": [
+    ".bmad",
+    ".claude",
+    "bin"
+  ],
+  "keywords": [
+    "bmad",
+    "claude",
+    "workflows"
+  ],
+  "author": "ownuun",
+  "license": "MIT"
+}

@@ -1,0 +1,112 @@
+# Workflow Status Template
+
+# This tracks progress through BMM methodology Analysis, Planning, and Solutioning phases.
+# Implementation phase is tracked separately in sprint-status.yaml
+
+# STATUS DEFINITIONS:
+# ==================
+# Initial Status (before completion):
+#   - required: Must be completed to progress
+#   - optional: Can be completed but not required
+#   - recommended: Strongly suggested but not required
+#   - conditional: Required only if certain conditions met (e.g., if_has_ui)
+#
+# Completion Status:
+#   - {file-path}: File created/found (e.g., "docs/product-brief.md")
+#   - skipped: Optional/conditional workflow that was skipped
+
+generated: "2025-11-20"
+project: "LifeToken"
+project_type: "AI 사용량 추적 및 분석 플랫폼"
+selected_track: "method"
+field_type: "greenfield"
+workflow_path: "method-greenfield"
+
+workflow_status:
+  # Phase 0: Discovery (Optional)
+  - phase: 0
+    name: "Discovery (Optional)"
+    workflows:
+      - id: "brainstorm-project"
+        status: "optional"
+        agent: "analyst"
+        command: "/bmad:bmm:workflows:brainstorm-project"
+        description: "창의적 탐색 및 아이디어 발산"
+
+      - id: "research"
+        status: "optional"
+        agent: "analyst"
+        command: "/bmad:bmm:workflows:research"
+        description: "기술/경쟁사 분석"
+
+      - id: "product-brief"
+        status: "optional"
+        agent: "analyst"
+        command: "/bmad:bmm:workflows:product-brief"
+        description: "전략적 제품 기획"
+
+  # Phase 1: Planning
+  - phase: 1
+    name: "Planning"
+    workflows:
+      - id: "prd"
+        status: "required"
+        agent: "pm"
+        command: "/bmad:bmm:workflows:prd"
+        description: "Product Requirements Document 작성"
+
+      - id: "validate-prd"
+        status: "optional"
+        agent: "pm"
+        command: "/bmad:bmm:workflows:validate-prd"
+        description: "PRD 품질 검증"
+
+      - id: "create-ux-design"
+        status: "conditional"
+        agent: "ux-designer"
+        command: "/bmad:bmm:workflows:create-ux-design"
+        description: "UX 디자인 (UI가 있는 경우)"
+
+  # Phase 2: Solutioning
+  - phase: 2
+    name: "Solutioning"
+    workflows:
+      - id: "architecture"
+        status: "required"
+        agent: "architect"
+        command: "/bmad:bmm:workflows:architecture"
+        description: "시스템 아키텍처 설계"
+
+      - id: "create-epics-and-stories"
+        status: "required"
+        agent: "pm"
+        command: "/bmad:bmm:workflows:create-epics-and-stories"
+        description: "에픽 및 스토리 생성"
+
+      - id: "test-design"
+        status: "recommended"
+        agent: "tea"
+        command: "/bmad:bmm:workflows:test-design"
+        description: "테스트 가능성 평가"
+
+      - id: "validate-architecture"
+        status: "optional"
+        agent: "architect"
+        command: "/bmad:bmm:workflows:validate-architecture"
+        description: "아키텍처 품질 검증"
+
+      - id: "implementation-readiness"
+        status: "required"
+        agent: "architect"
+        command: "/bmad:bmm:workflows:implementation-readiness"
+        description: "구현 준비 검증"
+
+  # Phase 3: Implementation
+  - phase: 3
+    name: "Implementation"
+    workflows:
+      - id: "sprint-planning"
+        status: "required"
+        agent: "sm"
+        command: "/bmad:bmm:workflows:sprint-planning"
+        description: "스프린트 계획 수립"
